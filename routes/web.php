@@ -14,29 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home', [
+        'name' => "fajar",
+        'buahan' => ['jambu', 'pisang', 'kelapa', 'jeruk']
+    ]);
 });
 
-Route::get('/about', function() {
-    return "About";
-});
-
-
-Route::view('/contact', 'contact', ['name' => 'fajar']);
-Route::redirect('/contactus', '/contact');
-
-Route::get('product/{id}', function ($id) {
-    return view('product.detail', ['id' => $id]);
-});
-
-Route::prefix('admin')->group(function () {
-    Route::get('/profil', function () {
-        return 'profil admin';
-    });
-    Route::get('/about', function () {
-        return 'about admin';
-    });
-    Route::get('/contact', function () {
-        return 'contact admin';
-    });
-});
+Route::view('/about', 'about');
